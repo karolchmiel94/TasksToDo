@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Reminder</string>
+    <string name="add_reminder">Add reminder</string>
+    <string name="enter_title">Enter title:</string>
+    <string name="enter_date">Enter date:</string>
+    <string name="enter_time">Enter time:</string>
+    <string name="title">Title</string>
+    <string name="localization">Set location:</string>
+    <string name="street_and_house">Enter street:</string>
+    <string name="enter_city">Enter city:</string>
+    <string name="add_localization">Click to add localization</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="Location">Location</string>
+    <string name="Edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="title_activity_maps">Map</string>
+</resources>

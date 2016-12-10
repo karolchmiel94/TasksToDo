@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_reminder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.karol.reminder.AddReminderActivity">
+
+    <TextView
+        android:text="@string/enter_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/titleTextView"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:width="160dp"
+        android:height="50dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dateTextView"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/enter_date"
+        android:layout_below="@+id/titleTextView"
+        android:layout_alignParentStart="true"
+        android:width="160dp"
+        android:height="50dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/timeTextView"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/enter_time"
+        android:layout_below="@+id/dateTextView"
+        android:layout_alignParentStart="true"
+        android:width="160dp"
+        android:height="50dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center_vertical"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/titleTextView"
+        android:id="@+id/titleEditText"
+        android:layout_above="@+id/dateTextView"
+        android:gravity="center_vertical"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:text="28-10-2016"
+        android:layout_alignTop="@+id/dateTextView"
+        android:id="@+id/dateEditText"
+        android:layout_above="@+id/timeTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/dateTextView"
+        android:gravity="center_vertical"
+        android:textSize="22sp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:text="14:35"
+        android:id="@+id/timeEditText"
+        android:layout_alignTop="@+id/timeTextView"
+        android:layout_alignBottom="@+id/timeTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/timeTextView"
+        android:gravity="center_vertical"
+        android:textSize="22sp"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationTextView"
+        android:textSize="30sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="@string/localization"
+        android:layout_below="@+id/timeTextView"
+        android:layout_alignParentStart="true"
+        android:height="50dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:text="Location will appear here soon, k?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locationTextView"
+        android:layout_alignParentStart="true"
+        android:id="@+id/setLocation"
+        android:layout_alignParentEnd="true"
+        android:height="50dp"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textColor="@android:color/black" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:id="@+id/addButton"
+            android:text="@string/add"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="5dp"
+            android:textSize="15sp"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:id="@+id/clearButton"
+            android:text="@string/clear"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="5dp"
+            android:textSize="15sp"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.33"
+            android:id="@+id/cancelButton"
+            android:text="@string/cancel"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Reminder</string>
+    <string name="add_reminder">Dodaj przypomnienie</string>
+    <string name="enter_title">Nazwa przypomnienia:</string>
+    <string name="enter_date">Wprowadź datę:</string>
+    <string name="enter_time">Wprowadź godzinę:</string>
+    <string name="title">Tytuł</string>
+    <string name="localization">Ustaw lokalizację:</string>
+    <string name="street_and_house">Wstaw nazwę ulicy:</string>
+    <string name="enter_city">Wprowadź nazwę miasta:</string>
+    <string name="add_localization">Kliknij, żeby dodać lokalizację</string>
+    <string name="add">Dodaj</string>
+    <string name="cancel">Anuluj</string>
+    <string name="clear">Wyczyść</string>
+    <string name="date">Data</string>
+    <string name="time">Czas</string>
+    <string name="Location">Lokalizacja</string>
+    <string name="Edit">Edytuj przypomnienie</string>
+    <string name="delete">Usuń przypomnienie</string>
+</resources>
