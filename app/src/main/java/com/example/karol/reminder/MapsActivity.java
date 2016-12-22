@@ -6,6 +6,10 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,14 +17,17 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tagmanager.TagManager;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     private LocationListener locManager;
+    Button searchButton;
+    EditText enterLocation;
 
     //------------------------------------------TO DO-----------------------------------------------
-    // Reverse geocoding!
+    //                                     Reverse geocoding!
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        searchButton = (Button) findViewById(R.id.search_localization);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text;
+                text = enterLocation.getText().toString();
+                Toast.makeText(getApplicationContext(), "Searching for " + text, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        enterLocation = (EditText) findViewById(R.id.enter_localization);
 
     }
 
