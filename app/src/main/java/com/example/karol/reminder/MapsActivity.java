@@ -1,9 +1,8 @@
 package com.example.karol.reminder;
 
-import android.content.Context;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,14 +16,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tagmanager.TagManager;
+
+import java.io.IOException;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     private LocationListener locManager;
-    Button searchButton;
+    Button searchButton, addButton;
     EditText enterLocation;
+    private android.location.Address address;
+    private String location;
+    private String street, city, number;
 
     //------------------------------------------TO DO-----------------------------------------------
     //                                     Reverse geocoding!
@@ -38,17 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         searchButton = (Button) findViewById(R.id.search_localization);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String text;
-                text = enterLocation.getText().toString();
-                Toast.makeText(getApplicationContext(), "Searching for " + text, Toast.LENGTH_LONG).show();
-            }
-        });
-
-        enterLocation = (EditText) findViewById(R.id.enter_localization);
-
+        addButton = (Button) findViewById(R.id.add_localization);
     }
 
     @Override
@@ -57,9 +51,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Gliwice and move the camera
         LatLng gliwice = new LatLng(50.310, 18.699);
-        mMap.addMarker(new MarkerOptions().position(gliwice).title("Marker in Gliwice"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(gliwice));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+
     }
 
     @Override
@@ -80,5 +74,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onProviderDisabled(String s) {
 
+    }
+
+    public void onSearch(View view) {
+        enterLocation = (EditText) findViewById(R.id.enter_localization);
+        location = enterLocation.getText().toString();
+        List<android.location.Address> addressList = null;
+
+        if(location != null || !location.equals("")){
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            this.address = addressList.get(0);
+            number = address.getSubThoroughfare();
+            city = address.getLocality();
+            street = address.getThoroughfare();
+            LatLng latLng = new LatLng(this.address.getLatitude(), this.address.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker"));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+            searchButton.setVisibility(View.INVISIBLE);
+            addButton.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void onAdd(View view) {
+        Toast.makeText(getApplicationContext(), "Location of " + location + " is in " + city + ", " +
+                street + " " + number, Toast.LENGTH_LONG).show();
+
+        searchButton.setVisibility(View.VISIBLE);
+        addButton.setVisibility(View.INVISIBLE);
     }
 }

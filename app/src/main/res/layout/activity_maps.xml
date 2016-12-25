@@ -25,13 +25,27 @@
             android:layout_width="90sp"
             android:layout_height="60sp"
             android:id="@+id/search_localization"
-            android:text="Search"
+            android:text="@string/search"
+            android:onClick="onSearch"
             android:layout_marginRight="0sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:background="@color/colorPrimaryDark"
-            android:textColor="#FFFFFF"/>
+            android:textColor="#FFFFFF"
+            android:visibility="visible"/>
 
+        <Button
+            android:layout_width="90sp"
+            android:layout_height="60sp"
+            android:id="@+id/add_localization"
+            android:text="@string/add"
+            android:onClick="onAdd"
+            android:layout_marginRight="0sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
+            android:visibility="invisible"/>
     </RelativeLayout>
 
 

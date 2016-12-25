@@ -18,4 +18,6 @@
     <string name="Location">Lokalizacja</string>
     <string name="Edit">Edytuj przypomnienie</string>
     <string name="delete">Usuń przypomnienie</string>
+    <string name="search">Szukaj</string>
+    <string name="title_activity_maps">Mapa</string>
 </resources>
