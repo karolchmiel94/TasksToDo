@@ -1,5 +1,7 @@
 package com.example.karol.reminder;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
@@ -103,10 +105,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void onAdd(View view) {
-        Toast.makeText(getApplicationContext(), "Location of " + location + " is in " + city + ", " +
+        //I need this no more
+        /*Toast.makeText(getApplicationContext(), "Location of " + location + " is in " + city + ", " +
                 street + " " + number, Toast.LENGTH_LONG).show();
 
         searchButton.setVisibility(View.VISIBLE);
-        addButton.setVisibility(View.INVISIBLE);
+        addButton.setVisibility(View.INVISIBLE); */
+
+        //Sending location back to addreminder bla bla class
+        String result = "" + number + " " + street + ", " + city;
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("result", result);
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
     }
 }

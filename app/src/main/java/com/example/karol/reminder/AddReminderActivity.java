@@ -1,5 +1,6 @@
 package com.example.karol.reminder;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -21,6 +22,7 @@ public class AddReminderActivity extends AppCompatActivity {
     private static final int SEVEN_DAYS = 604800000;
     private static String timeString, dateString;
     private Date mDate;
+    static final int PICK_LOCATION_REQUEST = 1;
 
     private static TextView titleTextView, dateTextView, timeTextView, locationTextView;
     private static TextView setLocation, dateEditText, timeEditText;
@@ -69,13 +71,13 @@ public class AddReminderActivity extends AppCompatActivity {
         setLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //First try
                 // My API KEY AIzaSyCCgX8Q5O6kgTZQqhXAgdoPiRRJnwY8vIk
-                Intent intent = new Intent(AddReminderActivity.this, MapsActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(AddReminderActivity.this, MapsActivity.class);
+                //startActivity(intent);
 
-                //End of that try
-                //Toast.makeText(getApplicationContext(), "We'll gonna add some localization, man!", Toast.LENGTH_SHORT).show();
+                //New, better intent
+                Intent intent = new Intent(AddReminderActivity.this, MapsActivity.class);
+                startActivityForResult(intent, PICK_LOCATION_REQUEST);
             }
         });
 
@@ -112,7 +114,7 @@ public class AddReminderActivity extends AppCompatActivity {
         String title = titleEditText.getText().toString();
         String date = dateEditText.getText().toString();
         String time = timeEditText.getText().toString();
-        String location = locationTextView.getText().toString();
+        String location = setLocation.getText().toString();
         BackgroundTask backgroundTask = new BackgroundTask(this);
         backgroundTask.execute("add_info", title, date, time, location);
     }
@@ -200,4 +202,17 @@ public class AddReminderActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "TimePicker dialog showing here soon!", Toast.LENGTH_SHORT).show();
     } //Done
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK) {
+                String result = data.getStringExtra("result");
+                setLocation.setText(result);
+            }
+            if(resultCode == Activity.RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(), "Got no location data", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 }
