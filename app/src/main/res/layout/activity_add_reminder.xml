@@ -69,6 +69,7 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
+        android:onClick="showDatePickerDialog"
         android:text="28-10-2016"
         android:layout_alignTop="@+id/dateTextView"
         android:id="@+id/dateEditText"
